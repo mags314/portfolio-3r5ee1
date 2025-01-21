@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-tab1',
@@ -8,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
-
+  constructor(private elRef: ElementRef) {}
+// Method to scroll to a specific section by ID
+scrollTo(sectionId: string) {
+  const element = this.elRef.nativeElement.querySelector(`#${sectionId}`);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
 }
